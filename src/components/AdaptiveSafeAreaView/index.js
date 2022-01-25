@@ -4,11 +4,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 
 function AdaptiveSafeAreaView(props) {
   const {withGradient = false} = props;
-  const Content = () => (
-    <SafeAreaView flex={1} style={props.style}>
-      {props.children}
-    </SafeAreaView>
-  );
+
   return withGradient ? (
     <LinearGradient
       start={{x: 0, y: 0}}
@@ -17,10 +13,14 @@ function AdaptiveSafeAreaView(props) {
       style={{
         flex: 1,
       }}>
-      <Content />
+      <SafeAreaView flex={1} style={props.style}>
+        {props.children}
+      </SafeAreaView>
     </LinearGradient>
   ) : (
-    <Content />
+    <SafeAreaView flex={1} style={props.style}>
+      {props.children}
+    </SafeAreaView>
   );
 }
 

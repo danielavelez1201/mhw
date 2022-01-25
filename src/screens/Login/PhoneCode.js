@@ -101,7 +101,7 @@ function PhoneCode(props) {
   }, [resentTimerCount]);
 
   return (
-    <AdaptiveSafeAreaView>
+    <AdaptiveSafeAreaView withGradient>
       <Center flex={1}>
         <Container
           flex={1}
@@ -145,7 +145,7 @@ function PhoneCode(props) {
                 {phoneCode}
               </Input>
             </Box>
-            <Text fontSize="sm" color="muted.400">
+            <Text fontSize="sm" color="muted.500">
               Enter the passcode that was sent to
             </Text>
             <Text fontSize="sm" color="white" fontWeight="bold" mb="5">
