@@ -5,7 +5,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {TouchableOpacity} from 'react-native';
 
 const options = ({route}) => ({
-  headerShown: route.name !== 'PhoneNumber' && route.name !== 'UserInfo',
+  headerShown: route.name !== 'Start',
   headerStyle: {
     backgroundColor: '#000',
     shadowColor: 'transparent',

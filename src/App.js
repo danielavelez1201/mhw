@@ -9,7 +9,7 @@ function App() {
   return (
     <NativeBaseProvider theme={theme}>
       <SafeAreaProvider>
-        <StatusBar barStyle="light-content" />
+        <StatusBar barStyle="dark-content" />
         <Navigator />
       </SafeAreaProvider>
     </NativeBaseProvider>

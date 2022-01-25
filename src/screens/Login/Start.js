@@ -32,7 +32,7 @@ function PhoneNumber(props) {
   };
 
   return (
-    <AdaptiveSafeAreaView>
+    <AdaptiveSafeAreaView withGradient>
       <Center flex={1}>
         <Container
           flex={1}
