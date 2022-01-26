@@ -1,17 +1,19 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Map from '../../screens/User/Map';
 import options from './options';
+import Tabbar from '../../components/Tabbar';
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 function UserNavigator() {
   return (
-    <Stack.Navigator
+    <Tab.Navigator
       initialRouteName="Map"
-      screenOptions={props => options(props)}>
-      <Stack.Screen name="Map" component={Map} />
-    </Stack.Navigator>
+      tabBar={props => <Tabbar {...props} />}
+      screenOptions={options}>
+      <Tab.Screen name="Map" component={Map} />
+    </Tab.Navigator>
   );
 }
 
