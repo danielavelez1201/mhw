@@ -13,8 +13,8 @@ function UserNavigator() {
       initialRouteName="PassList"
       tabBar={props => <Tabbar {...props} />}
       screenOptions={options}>
-      {/* <Tab.Screen name="Map" component={Map} /> */}
-      <Tab.Screen name="Passes" component={PassList} />
+      <Tab.Screen name="Map" component={Map} />
+      {/* <Tab.Screen name="Passes" component={PassList} /> */}
     </Tab.Navigator>
   );
 }
