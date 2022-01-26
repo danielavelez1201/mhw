@@ -1,9 +1,7 @@
-import {Center, Container, Text} from 'native-base';
-import React, {useEffect} from 'react';
-import {StyleSheet} from 'react-native';
+import {Center} from 'native-base';
+import React from 'react';
 import AdaptiveSafeAreaView from '../../components/AdaptiveSafeAreaView';
 import ModifiedKeyboardAvoidingView from '../../components/ModifiedKeyboardAvoidingView';
-
 import Search from '../../components/Search';
 import MapContainer from '../../components/MapContainer';
 
