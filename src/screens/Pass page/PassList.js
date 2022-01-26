@@ -6,6 +6,7 @@ import {
   Image,
   Text,
   Box,
+  ScrollView,
 } from 'native-base';
 import {TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
@@ -20,6 +21,17 @@ import primaryCardShadow from '../../constants/primaryCardShadow';
 import PassSearch from '../../components/PassSearch/index.js';
 import Pass from './Pass';
 
+const PASSES = [
+  {title: 'Burma Love', points: 320, status: 0},
+  {title: 'Burma Love', points: 450, status: 1},
+  {title: 'Burma Love', points: 330, status: 0},
+  {title: 'Burma Love', points: 800, status: 3},
+  {title: 'Burma Love', points: 320, status: 0},
+  {title: 'Burma Love', points: 450, status: 1},
+  {title: 'Burma Love', points: 330, status: 0},
+  {title: 'Burma Love', points: 800, status: 3},
+];
+
 function PassList(props) {
   return (
     <AdaptiveSafeAreaView>
@@ -32,9 +44,13 @@ function PassList(props) {
         mb="5">
         Passes
       </Text>
-      <Container flex={1} ml="5" w="100%">
+      <Container flex={1} ml="5">
         <PassSearch></PassSearch>
-        <Pass></Pass>
+        <ScrollView width="100%" p="5">
+          {PASSES.map(pass => (
+            <Pass data={pass} key={pass} />
+          ))}
+        </ScrollView>
       </Container>
     </AdaptiveSafeAreaView>
   );
