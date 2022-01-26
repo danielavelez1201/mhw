@@ -4,7 +4,7 @@ import {StyleSheet} from 'react-native';
 import AdaptiveSafeAreaView from '../../components/AdaptiveSafeAreaView';
 import ModifiedKeyboardAvoidingView from '../../components/ModifiedKeyboardAvoidingView';
 import MapView from 'react-native-maps';
-import Search from '../../components/Search';
+import Search from '../../components/Search/index.js';
 
 function Map(props) {
   const onSearch = text => {
