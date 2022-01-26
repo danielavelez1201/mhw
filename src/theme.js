@@ -14,6 +14,9 @@ const theme = extendTheme({
       800: '#210547',
       900: '#0a001c',
     },
+    secondary: {
+      300: '#F3D320',
+    },
   },
   config: {},
 });
