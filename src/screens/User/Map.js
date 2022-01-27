@@ -15,9 +15,11 @@ import Referrals from '../../components/Actionsheets/Referrals';
 import Leaderboard from '../../components/Actionsheets/Leaderboard';
 import Places from '../../components/Actionsheets/Places';
 import Showcase from '../../components/Actionsheets/Showcase';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 function Map(props) {
   const [isSearching, toggleSearching] = useState(false);
+  const insets = useSafeAreaInsets();
   // const [moneySpentSheetOpen, toggleMoneySpentSheet] = useState(true);
   // const [referralsSheetOpen, toggleReferralsSheet] = useState(true);
   // const [leaderboardSheetOpen, toggleLeaderboardSheet] = useState(true);
@@ -57,10 +59,13 @@ function Map(props) {
       <Center style={{marginHorizontal: 20}}>
         <ModifiedKeyboardAvoidingView
           style={{
-            maxHeight: '100%',
+            height: isSearching ? '100%' : '0%',
             alignItems: 'center',
           }}>
-          <Box flexDirection="row" alignItems="center">
+          <Box
+            flexDirection="row"
+            alignItems="center"
+            style={{marginTop: isSearching ? 0 : insets.top}}>
             <Search
               onChangeText={onSearch}
               onFocus={() => toggleSearching(true)}
@@ -83,7 +88,7 @@ function Map(props) {
             )}
           </Box>
           {isSearching && (
-            <Box flex={1} w="100%" style={{marginVertical: 10}}>
+            <Box flex={1} w="100%" style={{marginVertical: 10, height: '100%'}}>
               <ScrollView nestedScrollEnabled={true}>
                 <Heading color="black" fontSize="2xl">
                   Top Searches
