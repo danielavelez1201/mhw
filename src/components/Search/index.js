@@ -5,18 +5,19 @@ import theme from '../../theme';
 import primaryCardShadow from '../../constants/primaryCardShadow';
 
 function Search(props) {
-  const {onChangeText = () => {}} = props;
+  const {onChangeText = () => {}, onFocus = () => {}, width = '100%'} = props;
 
   return (
     <Box
       mb="2"
-      w="100%"
+      w={width}
       h="60"
       flexDir="row"
       borderWidth={3}
       borderRadius={10}
       borderColor="transparent"
       bgColor="#fff"
+      paddingRight={2}
       style={primaryCardShadow}>
       <InputLeftAddon
         minW="10%"
@@ -40,6 +41,7 @@ function Search(props) {
         selectionColor="primary.300"
         color="primary.300"
         onChangeText={onChangeText}
+        onFocus={onFocus}
       />
     </Box>
   );
