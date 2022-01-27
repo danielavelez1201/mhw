@@ -9,7 +9,12 @@ function PlaceResult(props) {
   return (
     <Box w="100%" style={{marginTop: 10}}>
       <TouchableOpacity
-        onPress={() => navigation.navigate('PlaceNav', {screen: 'Place'})}>
+        onPress={() =>
+          navigation.navigate('PlaceNav', {
+            screen: 'Place',
+            params: {name, address: location},
+          })
+        }>
         <Box
           flexDirection="row"
           alignItems="center"

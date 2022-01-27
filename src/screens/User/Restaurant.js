@@ -2,20 +2,60 @@ import {Image, ScrollView, Box, Text, Container} from 'native-base';
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Leaderboard from '../../components/Actionsheets/Leaderboard';
 import Carousel from '../../components/Carousel';
 import cardShadow from '../../constants/cardShadow';
 import primaryCardShadow from '../../constants/primaryCardShadow';
 import HeartFilledIcon from '../../static/icons/heartfilled.png';
+import CheckInIcon from '../../static/icons/checkin.png';
 import LeaderboardIcon from '../../static/icons/leaderboard.png';
 import theme from '../../theme';
 import people from './people';
 
 function Restaurant(props) {
+  const {name, address} = props.route.params;
+  const insets = useSafeAreaInsets();
   const [leaderboardSheetOpen, toggleLeaderboardSheet] = useState(false);
+
   return (
     <Box flex={1} backgroundColor="white">
-      <Carousel />
+      <Carousel name={name} />
+      <Box
+        width="100%"
+        height="50"
+        position="absolute"
+        flexDirection="column"
+        top={insets.top}
+        alignItems="center"
+        justifyContent="center">
+        <Text color={theme.colors.primary[500]} fontWeight="bold" fontSize={24}>
+          {name}
+        </Text>
+        <Text color="black" fontSize={16}>
+          {address}
+        </Text>
+      </Box>
+      <Box
+        width="100%"
+        height="50"
+        position="absolute"
+        flexDirection="column"
+        top={insets.top}
+        alignItems="flex-end"
+        justifyContent="center">
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('Scanner');
+          }}>
+          <Image
+            source={CheckInIcon}
+            resizeMode="contain"
+            alt="Check In"
+            style={{width: 40, height: 40}}
+          />
+        </TouchableOpacity>
+      </Box>
       <Box
         style={{
           width: '100%',
@@ -59,7 +99,7 @@ function Restaurant(props) {
           marginBottom={50}
           borderRadius={10}
           style={primaryCardShadow}>
-          <TouchableOpacity onPress={() => toggleLeaderboardSheet(true)}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Pass')}>
             <Box
               flexDirection="row"
               alignItems="center"

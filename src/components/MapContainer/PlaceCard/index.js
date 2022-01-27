@@ -5,12 +5,23 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import primaryCardShadow from '../../../constants/primaryCardShadow';
 import theme from '../../../theme';
 import HeartFilledIcon from '../../../static/icons/heartfilled.png';
-import {TouchableOpacity} from 'react-native';
+import {Share, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 function PlaceCard(props) {
   const navigation = useNavigation();
   const {uri, name, address, likes, closeCard} = props;
+  const onShare = async () => {
+    const link = 'https://nytimes.com';
+    try {
+      await Share.share({
+        title: `${name} is Poppin!`,
+        message: `Hey! You should checkout ${name}. The food is fantastic! Click here to see more ${link}`,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Box
       bgColor="#fff"
@@ -41,42 +52,50 @@ function PlaceCard(props) {
           borderRadius={100}
           style={{width: 100, height: 100, marginRight: 5}}
         />
-        <Box style={{width: 160}}>
-          <Text
-            fontSize={20}
-            fontWeight="bold"
-            color={theme.colors.primary[300]}>
-            {name}
-          </Text>
-          <Text fontSize={14} color="#979797">
-            {address}
-          </Text>
-          <Box
-            flexDir="row"
-            alignItems="center"
-            style={{height: 23, width: '100%'}}>
-            <Image
-              source={HeartFilledIcon}
-              resizeMode="contain"
-              alt="Place"
-              borderRadius={100}
-              style={{width: 23, height: 23, marginRight: 5}}
-            />
-            {likes.map((uri, index) => (
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('PlaceNav', {
+              screen: 'Place',
+              params: {name, address},
+            })
+          }>
+          <Box style={{width: 160}}>
+            <Text
+              fontSize={20}
+              fontWeight="bold"
+              color={theme.colors.primary[300]}>
+              {name}
+            </Text>
+            <Text fontSize={14} color="#979797">
+              {address}
+            </Text>
+            <Box
+              flexDir="row"
+              alignItems="center"
+              style={{height: 23, width: '100%'}}>
               <Image
-                key={index}
-                source={{uri}}
+                source={HeartFilledIcon}
                 resizeMode="contain"
                 alt="Place"
                 borderRadius={100}
                 style={{width: 23, height: 23, marginRight: 5}}
               />
-            ))}
-            <Text fontSize={10} color="#979797">
-              23 more
-            </Text>
+              {likes.map((uri, index) => (
+                <Image
+                  key={index}
+                  source={{uri}}
+                  resizeMode="contain"
+                  alt="Place"
+                  borderRadius={100}
+                  style={{width: 23, height: 23, marginRight: 5}}
+                />
+              ))}
+              <Text fontSize={10} color="#979797">
+                23 more
+              </Text>
+            </Box>
           </Box>
-        </Box>
+        </TouchableOpacity>
       </Box>
       <Box
         flexDirection="row"
@@ -95,7 +114,11 @@ function PlaceCard(props) {
           }}>
           <Button
             backgroundColor="transparent"
-            onPress={() => navigation.navigate('PlaceNav', {screen: 'Place'})}>
+            onPress={() =>
+              navigation.navigate('PlaceNav', {
+                screen: 'Scanner',
+              })
+            }>
             <Text
               fontWeight="bold"
               fontSize="sm"
@@ -104,7 +127,11 @@ function PlaceCard(props) {
             </Text>
           </Button>
         </LinearGradient>
-        <Button borderRadius={25} variant="outline" style={{width: 87.5}}>
+        <Button
+          borderRadius={25}
+          variant="outline"
+          style={{width: 87.5}}
+          onPress={onShare}>
           <Text fontSize="sm">Share</Text>
         </Button>
       </Box>

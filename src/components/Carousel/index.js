@@ -1,11 +1,23 @@
 import {Box, Button, Image, Text} from 'native-base';
 import React, {useState} from 'react';
-import {Dimensions, TouchableOpacity} from 'react-native';
+import {Share, Dimensions, TouchableOpacity} from 'react-native';
 import cardShadow from '../../constants/cardShadow';
 import photos from './photos';
 
 function Carousel(props) {
+  const {name} = props;
   const [photoIndex, setPhotoIndex] = useState(0);
+  const onShare = async () => {
+    const link = 'https://nytimes.com';
+    try {
+      await Share.share({
+        title: `${name} is Poppin!`,
+        message: `Hey! You should checkout ${name}. The food is fantastic! Click here to see more ${link}`,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Box width="100%" height="35%">
@@ -53,9 +65,7 @@ function Carousel(props) {
           },
           cardShadow,
         ]}
-        onPress={() => {
-          console.log('HI');
-        }}>
+        onPress={onShare}>
         <Text fontWeight="bold" fontSize="sm" color="white">
           Share
         </Text>

@@ -22,7 +22,7 @@ function UserNavigator() {
 
   return (
     <Tab.Navigator
-      initialRouteName="Passes"
+      initialRouteName="Map"
       // tabBar={props => <Tabbar {...props} />}
       screenOptions={options}>
       <Tab.Screen
@@ -90,6 +90,7 @@ function UserNavigator() {
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,
+          tabBarStyle: {display: 'none'},
         }}
       />
       <Tab.Screen
