@@ -8,7 +8,7 @@ import places from './places';
 import Place from './Place';
 
 function MapContainer(props) {
-  const [currLoc, setCurrLoc] = useState(true);
+  const [currLoc, setCurrLoc] = useState(null);
   useEffect(() => {
     Geolocation.setRNConfiguration({
       authorizationLevel: 'whenInUse',
@@ -33,10 +33,10 @@ function MapContainer(props) {
         style={StyleSheet.absoluteFillObject}
         customMapStyle={customMapStyles}
         initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          latitude: currLoc.latitude,
+          longitude: currLoc.longitude,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005,
         }}
         zoomEnabled={false}
         showsUserLocation

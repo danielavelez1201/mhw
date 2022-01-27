@@ -1,6 +1,7 @@
 const options = () => {
   return {
     headerShown: false,
+    tabBarShowLabel: false,
   };
 };
 

@@ -6,8 +6,10 @@ import primaryCardShadow from '../../../constants/primaryCardShadow';
 import theme from '../../../theme';
 import HeartFilledIcon from '../../../static/icons/heartfilled.png';
 import {TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 function PlaceCard(props) {
+  const navigation = useNavigation();
   const {uri, name, address, likes, closeCard} = props;
   return (
     <Box
@@ -91,7 +93,9 @@ function PlaceCard(props) {
             width: 87.5,
             marginRight: 25,
           }}>
-          <Button backgroundColor="transparent">
+          <Button
+            backgroundColor="transparent"
+            onPress={() => navigation.navigate('PlaceNav', {screen: 'Place'})}>
             <Text
               fontWeight="bold"
               fontSize="sm"

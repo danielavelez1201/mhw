@@ -57,7 +57,7 @@ function Map(props) {
       <Center style={{marginHorizontal: 20}}>
         <ModifiedKeyboardAvoidingView
           style={{
-            height: '100%',
+            maxHeight: '100%',
             alignItems: 'center',
           }}>
           <Box flexDirection="row" alignItems="center">
@@ -102,23 +102,23 @@ function Map(props) {
         onClose={() => {}}
         isVisible={moneySpentSheetOpen}
         toggleVisible={toggleMoneySpentSheet}
-      /> */}
-      {/* <Referrals
+      />
+      <Referrals
         onClose={() => {}}
         isVisible={referralsSheetOpen}
         toggleVisible={toggleReferralsSheet}
-      /> */}
-      {/* <Leaderboard
+      />
+      <Leaderboard
         onClose={() => {}}
         isVisible={leaderboardSheetOpen}
         toggleVisible={toggleLeaderboardSheet}
-      /> */}
-      {/* <Places
+      />
+      <Places
         onClose={() => {}}
         isVisible={placesSheetOpen}
         toggleVisible={togglePlacesSheet}
-      /> */}
-      {/* <Showcase
+      />
+      <Showcase
         onClose={() => {}}
         isVisible={showcaseSheetOpen}
         toggleVisible={toggleShowcaseSheet}
