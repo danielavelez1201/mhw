@@ -22,7 +22,7 @@ function Map(props) {
   // const [referralsSheetOpen, toggleReferralsSheet] = useState(true);
   // const [leaderboardSheetOpen, toggleLeaderboardSheet] = useState(true);
   // const [placesSheetOpen, togglePlacesSheet] = useState(true);
-  const [showcaseSheetOpen, toggleShowcaseSheet] = useState(true);
+  // const [showcaseSheetOpen, toggleShowcaseSheet] = useState(true);
 
   const cancelSearch = () => {
     toggleSearching(false);
@@ -118,11 +118,11 @@ function Map(props) {
         isVisible={placesSheetOpen}
         toggleVisible={togglePlacesSheet}
       /> */}
-      <Showcase
+      {/* <Showcase
         onClose={() => {}}
         isVisible={showcaseSheetOpen}
         toggleVisible={toggleShowcaseSheet}
-      />
+      /> */}
     </AdaptiveSafeAreaView>
   );
 }

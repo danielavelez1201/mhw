@@ -1,9 +1,10 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Map from '../../screens/User/Map';
+import PassList from '../../screens/Pass page/PassList';
+import Restaurant from '../../screens/User/Restaurant';
 import options from './options';
 import Tabbar from '../../components/Tabbar';
-import PassList from '../../screens/Pass page/PassList';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,7 +15,8 @@ function UserNavigator() {
       tabBar={props => <Tabbar {...props} />}
       screenOptions={options}>
       {/* <Tab.Screen name="Map" component={Map} /> */}
-      <Tab.Screen name="Passes" component={PassList} />
+      {/* <Tab.Screen name="Passes" component={PassList} /> */}
+      <Tab.Screen name="Restaurant" component={Restaurant} />
     </Tab.Navigator>
   );
 }
