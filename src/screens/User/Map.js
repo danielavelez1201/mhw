@@ -11,10 +11,12 @@ import {searchesA, searchesB} from './searches';
 import places from './places';
 import theme from '../../theme';
 import MoneySpent from '../../components/Actionsheets/MoneySpent';
+import Referrals from '../../components/Actionsheets/Referrals';
 
 function Map(props) {
   const [isSearching, toggleSearching] = useState(false);
-  const [moneySpentSheetOpen, toggleMoneySpentSheet] = useState(false);
+  // const [moneySpentSheetOpen, toggleMoneySpentSheet] = useState(true);
+  const [referralsSheetOpen, toggleReferralsSheet] = useState(true);
 
   const cancelSearch = () => {
     toggleSearching(false);
@@ -90,10 +92,15 @@ function Map(props) {
           )}
         </ModifiedKeyboardAvoidingView>
       </Center>
-      <MoneySpent
+      {/* <MoneySpent
         onClose={() => {}}
         isVisible={moneySpentSheetOpen}
         toggleVisible={toggleMoneySpentSheet}
+      /> */}
+      <Referrals
+        onClose={() => {}}
+        isVisible={referralsSheetOpen}
+        toggleVisible={toggleReferralsSheet}
       />
     </AdaptiveSafeAreaView>
   );
