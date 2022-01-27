@@ -22,14 +22,62 @@ import PassSearch from '../../components/PassSearch/index.js';
 import Pass from './Pass';
 
 const PASSES = [
-  {title: 'Burma Love', points: 320, status: 0},
-  {title: 'Burma Love', points: 450, status: 1},
-  {title: 'Burma Love', points: 330, status: 0},
-  {title: 'Burma Love', points: 800, status: 3},
-  {title: 'Burma Love', points: 320, status: 0},
-  {title: 'Burma Love', points: 450, status: 1},
-  {title: 'Burma Love', points: 330, status: 0},
-  {title: 'Burma Love', points: 800, status: 3},
+  {
+    title: 'Burma Love',
+    points: 320,
+    status: 0,
+    customerScore: 200,
+    referralScore: 120,
+  },
+  {
+    title: 'Burma Love',
+    points: 450,
+    status: 1,
+    customerScore: 200,
+    referralScore: 120,
+  },
+  {
+    title: 'Burma Love',
+    points: 330,
+    status: 0,
+    customerScore: 200,
+    referralScore: 120,
+  },
+  {
+    title: 'Burma Love',
+    points: 800,
+    status: 3,
+    customerScore: 200,
+    referralScore: 120,
+  },
+  {
+    title: 'Burma Love',
+    points: 320,
+    status: 0,
+    customerScore: 200,
+    referralScore: 120,
+  },
+  {
+    title: 'Burma Love',
+    points: 450,
+    status: 1,
+    customerScore: 200,
+    referralScore: 120,
+  },
+  {
+    title: 'Burma Love',
+    points: 330,
+    status: 0,
+    customerScore: 200,
+    referralScore: 120,
+  },
+  {
+    title: 'Burma Love',
+    points: 800,
+    status: 3,
+    customerScore: 200,
+    referralScore: 120,
+  },
 ];
 
 function PassList(props) {

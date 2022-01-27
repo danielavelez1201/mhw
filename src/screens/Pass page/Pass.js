@@ -16,6 +16,7 @@ import BurmaLove from '../../static/images/BurmaLove.png';
 import LinearGradient from 'react-native-linear-gradient';
 import Referrals from '../../static/images/Referrals.png';
 import Money from '../../static/images/Money.png';
+import {Transition} from 'react-transition-group';
 
 export const LEVELS = [
   {name: 'Godly', points: 300},
@@ -49,7 +50,7 @@ function Pass(props) {
       p="2"
       pr="8"
       style={primaryCardShadow}
-      onPress={() => setOpen(true)}>
+      onPress={() => setOpen(!open)}>
       <Box mb="2" w="100%" flexDir="row">
         <Image alt="Burma Love Logo" h="100" w="100" source={BurmaLove} />
         <Container ml="5" flexDir="column">
@@ -85,22 +86,34 @@ function Pass(props) {
           </Text>
         </Container>
       </Box>
-      {open && (
-        <Container p="3">
-          <Container flexDir="row" alignItems="center">
+      <Container p="3" display={open ? '' : 'none'} transition={'all 1s ease'}>
+        <Container flexDir="row" alignItems="center">
+          <Container w="10">
             <Image source={Money} h="10" w="10" />
-            <Text fontSize="sm" fontWeight="bold" color="primary.300">
+          </Container>
+          <Container flexDir="row">
+            <Text fontSize="sm" fontWeight="bold" color="primary.300" w="115">
               Customer score:
             </Text>
-          </Container>
-          <Container flexDir="row" alignItems="center">
-            <Image source={Referrals} h="8" w="8" />
             <Text fontSize="sm" fontWeight="bold" color="primary.300">
-              Referral score:
+              {' ' + props.data.customerScore}
             </Text>
           </Container>
         </Container>
-      )}
+        <Container flexDir="row" alignItems="center">
+          <Container w="10">
+            <Image source={Referrals} h="8" w="8" />
+          </Container>
+          <Container flexDir="row">
+            <Text fontSize="sm" fontWeight="bold" color="primary.300">
+              Referral score:
+            </Text>
+            <Text fontSize="sm" fontWeight="bold" color="primary.300">
+              {' ' + props.data.referralScore}
+            </Text>
+          </Container>
+        </Container>
+      </Container>
     </Button>
   );
 }
