@@ -10,10 +10,14 @@ import PassportIcon from '../../static/icons/passport.png';
 import ProfileIcon from '../../static/icons/profile.png';
 import PassNavigator from './PassNavigator';
 import PlaceNavigator from './PlaceNavigator';
+import {TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
 function UserNavigator() {
+  const navigation = useNavigation();
+
   return (
     <Tab.Navigator
       initialRouteName="Map"
@@ -42,13 +46,21 @@ function UserNavigator() {
         options={{
           tabBarIcon: ({focused, color}) => (
             <Box alignItems="center" justifyContent="center">
-              <Image
-                source={PassportIcon}
-                resizeMode="contain"
-                alt="Passport"
-                borderRadius={100}
-                style={{width: 60, height: 60}}
-              />
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.reset({
+                    routes: [{name: 'Map'}],
+                    index: 0,
+                  })
+                }>
+                <Image
+                  source={PassportIcon}
+                  resizeMode="contain"
+                  alt="Passport"
+                  borderRadius={100}
+                  style={{width: 60, height: 60}}
+                />
+              </TouchableOpacity>
             </Box>
           ),
         }}
