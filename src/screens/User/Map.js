@@ -13,12 +13,14 @@ import theme from '../../theme';
 import MoneySpent from '../../components/Actionsheets/MoneySpent';
 import Referrals from '../../components/Actionsheets/Referrals';
 import Leaderboard from '../../components/Actionsheets/Leaderboard';
+import Places from '../../components/Actionsheets/Places';
 
 function Map(props) {
   const [isSearching, toggleSearching] = useState(false);
   // const [moneySpentSheetOpen, toggleMoneySpentSheet] = useState(true);
   // const [referralsSheetOpen, toggleReferralsSheet] = useState(true);
   // const [leaderboardSheetOpen, toggleLeaderboardSheet] = useState(true);
+  const [placesSheetOpen, togglePlacesSheet] = useState(true);
 
   const cancelSearch = () => {
     toggleSearching(false);
@@ -109,6 +111,11 @@ function Map(props) {
         isVisible={leaderboardSheetOpen}
         toggleVisible={toggleLeaderboardSheet}
       /> */}
+      <Places
+        onClose={() => {}}
+        isVisible={placesSheetOpen}
+        toggleVisible={togglePlacesSheet}
+      />
     </AdaptiveSafeAreaView>
   );
 }
