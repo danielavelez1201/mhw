@@ -12,6 +12,7 @@ import PassNavigator from './PassNavigator';
 import PlaceNavigator from './PlaceNavigator';
 import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import Scanner from '../../screens/Scanner';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +21,7 @@ function UserNavigator() {
 
   return (
     <Tab.Navigator
-      initialRouteName="Map"
+      initialRouteName="Scanner"
       // tabBar={props => <Tabbar {...props} />}
       screenOptions={options}>
       <Tab.Screen
@@ -85,6 +86,14 @@ function UserNavigator() {
       <Tab.Screen
         name="PlaceNav"
         component={PlaceNavigator}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+      />
+      <Tab.Screen
+        name="Scanner"
+        component={Scanner}
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,
