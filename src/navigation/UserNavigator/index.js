@@ -13,6 +13,7 @@ import PlaceNavigator from './PlaceNavigator';
 import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Scanner from '../../screens/Scanner';
+import ProfileNavigator from './ProfileNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +22,7 @@ function UserNavigator() {
 
   return (
     <Tab.Navigator
-      initialRouteName="Scanner"
+      initialRouteName="ProfileNav"
       // tabBar={props => <Tabbar {...props} />}
       screenOptions={options}>
       <Tab.Screen
@@ -67,8 +68,8 @@ function UserNavigator() {
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={Map}
+        name="ProfileNav"
+        component={ProfileNavigator}
         options={{
           tabBarIcon: ({focused, color}) => (
             <Box alignItems="center" justifyContent="center">

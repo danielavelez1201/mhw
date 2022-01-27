@@ -123,11 +123,7 @@ function Map(props) {
         isVisible={placesSheetOpen}
         toggleVisible={togglePlacesSheet}
       />
-      <Showcase
-        onClose={() => {}}
-        isVisible={showcaseSheetOpen}
-        toggleVisible={toggleShowcaseSheet}
-      /> */}
+       */}
     </AdaptiveSafeAreaView>
   );
 }
