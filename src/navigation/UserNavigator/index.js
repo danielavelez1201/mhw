@@ -22,7 +22,7 @@ function UserNavigator() {
 
   return (
     <Tab.Navigator
-      initialRouteName="ProfileNav"
+      initialRouteName="Passes"
       // tabBar={props => <Tabbar {...props} />}
       screenOptions={options}>
       <Tab.Screen
