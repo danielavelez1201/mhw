@@ -10,9 +10,11 @@ import PlaceResult from '../../components/PlaceResult';
 import {searchesA, searchesB} from './searches';
 import places from './places';
 import theme from '../../theme';
+import MoneySpent from '../../components/Actionsheets/MoneySpent';
 
 function Map(props) {
-  const [isSearching, toggleSearching] = useState(true);
+  const [isSearching, toggleSearching] = useState(false);
+  const [moneySpentSheetOpen, toggleMoneySpentSheet] = useState(false);
 
   const cancelSearch = () => {
     toggleSearching(false);
@@ -88,6 +90,11 @@ function Map(props) {
           )}
         </ModifiedKeyboardAvoidingView>
       </Center>
+      <MoneySpent
+        onClose={() => {}}
+        isVisible={moneySpentSheetOpen}
+        toggleVisible={toggleMoneySpentSheet}
+      />
     </AdaptiveSafeAreaView>
   );
 }
