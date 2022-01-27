@@ -10,9 +10,15 @@ import PlaceResult from '../../components/PlaceResult';
 import {searchesA, searchesB} from './searches';
 import places from './places';
 import theme from '../../theme';
+import MoneySpent from '../../components/Actionsheets/MoneySpent';
+import Referrals from '../../components/Actionsheets/Referrals';
+import Leaderboard from '../../components/Actionsheets/Leaderboard';
 
 function Map(props) {
-  const [isSearching, toggleSearching] = useState(true);
+  const [isSearching, toggleSearching] = useState(false);
+  // const [moneySpentSheetOpen, toggleMoneySpentSheet] = useState(true);
+  // const [referralsSheetOpen, toggleReferralsSheet] = useState(true);
+  // const [leaderboardSheetOpen, toggleLeaderboardSheet] = useState(true);
 
   const cancelSearch = () => {
     toggleSearching(false);
@@ -88,6 +94,21 @@ function Map(props) {
           )}
         </ModifiedKeyboardAvoidingView>
       </Center>
+      {/* <MoneySpent
+        onClose={() => {}}
+        isVisible={moneySpentSheetOpen}
+        toggleVisible={toggleMoneySpentSheet}
+      /> */}
+      {/* <Referrals
+        onClose={() => {}}
+        isVisible={referralsSheetOpen}
+        toggleVisible={toggleReferralsSheet}
+      /> */}
+      {/* <Leaderboard
+        onClose={() => {}}
+        isVisible={leaderboardSheetOpen}
+        toggleVisible={toggleLeaderboardSheet}
+      /> */}
     </AdaptiveSafeAreaView>
   );
 }
