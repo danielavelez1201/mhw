@@ -17,6 +17,7 @@ function MapContainer(props) {
     Geolocation.getCurrentPosition(
       position => {
         const {coords} = position;
+        console.log(coords);
         setCurrLoc({
           latitude: coords.latitude,
           longitude: coords.longitude,

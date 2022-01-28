@@ -4,6 +4,8 @@ import {Image} from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Passport from '../../static/icons/passport.png';
 import {Camera} from 'expo-camera';
+import {BarCodeScanner} from 'expo-barcode-scanner';
+
 import theme from '../../theme';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
@@ -11,6 +13,7 @@ function Scanner(props) {
   const insets = useSafeAreaInsets();
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const [scanned, setScanned] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -24,6 +27,13 @@ function Scanner(props) {
   //   return <Profile />;
   // }
 
+  const handleBarCodeScanned = ({type, data}) => {
+    setScanned(true);
+    console.log(
+      `Bar code with type ${type} and data ${data} has been scanned!`,
+    );
+  };
+
   if (hasPermission === null) {
     return <View />;
   }
@@ -32,7 +42,10 @@ function Scanner(props) {
   }
   return (
     <View style={styles.container}>
-      <Camera style={styles.camera} type={type}>
+      <BarCodeScanner
+        style={styles.camera}
+        type={type}
+        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             onPress={console.log('Yay!')}
@@ -48,7 +61,7 @@ function Scanner(props) {
             <Image source={Passport} alt="Take Picture" />
           </TouchableOpacity>
         </View>
-      </Camera>
+      </BarCodeScanner>
       <TouchableOpacity
         style={{position: 'absolute', top: insets.top, right: insets.right}}
         onPress={() => props.navigation.navigate('Map')}>
