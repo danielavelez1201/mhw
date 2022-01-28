@@ -52,28 +52,28 @@ const PASSES = [
   },
   {
     title: 'Burma Love',
-    points: 320,
+    points: 321,
     status: 0,
     customerScore: 200,
     referralScore: 120,
   },
   {
     title: 'Burma Love',
-    points: 450,
+    points: 451,
     status: 1,
     customerScore: 200,
     referralScore: 120,
   },
   {
     title: 'Burma Love',
-    points: 330,
+    points: 331,
     status: 0,
     customerScore: 200,
     referralScore: 120,
   },
   {
     title: 'Burma Love',
-    points: 800,
+    points: 801,
     status: 3,
     customerScore: 200,
     referralScore: 120,
@@ -82,7 +82,7 @@ const PASSES = [
 
 function PassList(props) {
   return (
-    <AdaptiveSafeAreaView>
+    <AdaptiveSafeAreaView style={{backgroundColor: 'white'}}>
       <Text
         ml="5"
         mt="5"
@@ -96,7 +96,7 @@ function PassList(props) {
         <PassSearch></PassSearch>
         <ScrollView width="100%" p="5">
           {PASSES.map(pass => (
-            <Pass data={pass} key={pass} />
+            <Pass data={pass} key={pass.title + pass.points} />
           ))}
         </ScrollView>
       </Container>

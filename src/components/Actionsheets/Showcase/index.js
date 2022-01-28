@@ -159,7 +159,7 @@ function Showcase(props) {
                         {level}
                       </Text>
                       <Text fontSize={12} color="#979797">
-                        From {from}
+                        Since {from}
                       </Text>
                     </Box>
                     {isSearching && (
@@ -194,7 +194,7 @@ function Showcase(props) {
                     alignItems="center"
                     w="100%">
                     <Text fontSize="lg" color={'black'} w="100%">
-                      No places found!
+                      No passes found!
                     </Text>
                   </Box>
                 </Box>

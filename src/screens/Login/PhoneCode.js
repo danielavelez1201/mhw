@@ -9,7 +9,8 @@ import {
   Text,
 } from 'native-base';
 import React, {useEffect, useState} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {Alert, TouchableOpacity} from 'react-native';
+import {auth} from '../../../firebase';
 import AdaptiveSafeAreaView from '../../components/AdaptiveSafeAreaView';
 import ModifiedKeyboardAvoidingView from '../../components/ModifiedKeyboardAvoidingView';
 import LockIcon from '../../static/icons/lock.png';
@@ -21,39 +22,36 @@ function PhoneCode(props) {
   const [resentTimerCount, setResentTimerCount] = useState(0);
   const [phoneCode, setPhoneCode] = useState('');
   const [confirmCode, setConfirmCode] = useState(null);
-  const {phoneNumber, rawPhoneNumber} = {
-    phoneNumber: '123',
-    rawPhoneNumber: '123',
-  }; // props.route.params;
+  const {phoneNumber, rawPhoneNumber} = props.route.params;
   const firebasePhoneNum = `${rawPhoneNumber.substring(
     0,
     3,
   )}-${rawPhoneNumber.substring(3, 6)}-${rawPhoneNumber.substring(6)}`;
 
   const onChangePhoneCode = async code => {
-    // setPhoneCode(code);
-    // if (code.length === 6 && confirmCode !== null) {
-    togglePhoneCodeDisabled(true);
-    // try {
-    //   await confirmCode.confirm(code);
-    // clearInterval(resentTimer);
-    // props.navigation.navigate('UserInfo');
-    // } catch (error) {
-    //   const msg =
-    //     error.code === 'auth/invalid-verification-id' ||
-    //     'auth/invalid-verification-code'
-    //       ? 'Phone code invalid. Check the code again or send another one below 😅'
-    //       : 'An error occurred while signing you up. Please try again 🥺';
-    // togglePhoneCodeDisabled(false);
-    //   Alert.alert('Phone Code Error', msg, [
-    //     {
-    //       text: 'Dismiss',
-    //       style: 'cancel',
-    //     },
-    //   ]);
-    // }
+    setPhoneCode(code);
+    if (code.length === 6 && confirmCode !== null) {
+      togglePhoneCodeDisabled(true);
+      try {
+        await confirmCode.confirm(code);
+        clearInterval(resentTimer);
+      } catch (error) {
+        const msg =
+          error.code === 'auth/invalid-verification-id' ||
+          'auth/invalid-verification-code'
+            ? 'Phone code invalid. Check the code again or send another one below 😅'
+            : 'An error occurred while signing you up. Please try again 🥺';
+        togglePhoneCodeDisabled(false);
+        console.log(error);
+        Alert.alert('Phone Code Error', msg, [
+          {
+            text: 'Dismiss',
+            style: 'cancel',
+          },
+        ]);
+      }
+    }
   };
-  // };
 
   const initResetTimer = () => {
     setResentTimerCount(30);
@@ -63,27 +61,27 @@ function PhoneCode(props) {
   };
 
   const resendCode = async () => {
-    // toggleResending(true);
-    // try {
-    //   const confirmation = await auth.signInWithPhoneNumber(
-    //     `+1 ${firebasePhoneNum}`,
-    //   );
-    // setConfirmCode(confirmation);
-    initResetTimer();
-    // } catch (error) {
-    //   console.log(error);
-    //   Alert.alert(
-    //     'Phone Code Error',
-    //     'An error occurred while signing you up. Please try again 🥺',
-    //     [
-    //       {
-    //         text: 'Dismiss',
-    //         style: 'cancel',
-    //       },
-    //     ],
-    //   );
-    // }
-    // toggleResending(false);
+    toggleResending(true);
+    try {
+      const confirmation = await auth.signInWithPhoneNumber(
+        `+1 ${firebasePhoneNum}`,
+      );
+      setConfirmCode(confirmation);
+      initResetTimer();
+    } catch (error) {
+      console.log(error);
+      Alert.alert(
+        'Phone Code Error',
+        'An error occurred while signing you up. Please try again 🥺',
+        [
+          {
+            text: 'Dismiss',
+            style: 'cancel',
+          },
+        ],
+      );
+    }
+    toggleResending(false);
   };
 
   useEffect(() => {
