@@ -38,7 +38,7 @@ function Friend(props) {
               Ivan Zhang
             </Text>
             <Text fontSize={14} fontWeight="bold" color="#979797">
-              0xde0B295669...c85E40f4cb697BAe
+              0x2e3daee951ae...572De5C5e1E6274A90c3
             </Text>
           </Box>
         </Box>
