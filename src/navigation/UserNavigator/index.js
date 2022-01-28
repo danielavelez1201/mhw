@@ -15,6 +15,7 @@ import Scanner from '../../screens/Scanner';
 import ProfileNavigator from './ProfileNavigator';
 import PassList from '../../screens/Pass page/PassList';
 import Profile from '../../screens/Profile';
+import theme from '../../theme';
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +32,15 @@ function UserNavigator() {
         component={PassList}
         options={{
           tabBarIcon: ({focused, color}) => (
-            <Box alignItems="center" justifyContent="center">
+            <Box
+              alignItems="center"
+              justifyContent="center"
+              {...(focused
+                ? {
+                    backgroundColor: theme.colors.primary[100],
+                    borderRadius: 100,
+                  }
+                : {})}>
               <Image
                 source={WalletIcon}
                 resizeMode="contain"
@@ -48,7 +57,15 @@ function UserNavigator() {
         component={Map}
         options={{
           tabBarIcon: ({focused, color}) => (
-            <Box alignItems="center" justifyContent="center">
+            <Box
+              alignItems="center"
+              justifyContent="center"
+              {...(focused
+                ? {
+                    backgroundColor: theme.colors.primary[100],
+                    borderRadius: 100,
+                  }
+                : {})}>
               <TouchableOpacity
                 onPress={() =>
                   navigation.reset({
@@ -73,7 +90,15 @@ function UserNavigator() {
         component={Profile}
         options={{
           tabBarIcon: ({focused, color}) => (
-            <Box alignItems="center" justifyContent="center">
+            <Box
+              alignItems="center"
+              justifyContent="center"
+              {...(focused
+                ? {
+                    backgroundColor: theme.colors.primary[100],
+                    borderRadius: 100,
+                  }
+                : {})}>
               <Image
                 source={ProfileIcon}
                 resizeMode="contain"
