@@ -6,13 +6,13 @@ const friends = [
   },
   {
     id: 2,
-    name: 'Rosie's Pop-Up',
-    numCollections: 2,
+    name: "Rosie's Pop-Up",
+    numCollections: 1,
   },
   {
     id: 3,
     name: 'Mayami Mexicantina',
-    numCollections: 3,
+    numCollections: 1,
   },
 ];
 
