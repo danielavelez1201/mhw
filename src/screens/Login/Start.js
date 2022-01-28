@@ -6,6 +6,7 @@ import {
   Image,
   Text,
   Box,
+  Button,
 } from 'native-base';
 import {TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
@@ -16,6 +17,7 @@ import PassportLogo from '../../static/images/Logo.png';
 import PhoneIcon from '../../static/icons/phone.png';
 import MetamaskIcon from '../../static/icons/metamask.png';
 import cardShadow from '../../constants/cardShadow';
+import DeSoIcon from '../../static/icons/deso.png';
 
 function PhoneNumber(props) {
   const [phoneNum, setPhoneNum] = useState('');
@@ -120,6 +122,46 @@ function PhoneNumber(props) {
                       Connect to Metamask
                     </Text>
                   </Box>
+                </Box>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Box
+                  w="100%"
+                  h="60"
+                  flexDir="row"
+                  backgroundColor="white"
+                  borderRadius={10}
+                  style={cardShadow}
+                  mt="5">
+                  <InputLeftAddon
+                    minW="20%"
+                    children={
+                      <Image
+                        alt="Metamask"
+                        source={DeSoIcon}
+                        resizeMode="stretch"
+                        h="8"
+                        w="8"
+                      />
+                    }
+                    bgColor="transparent"
+                    borderWidth={0}
+                  />
+
+                  <Button
+                    flex={1}
+                    w="80%"
+                    justifyContent="flex-start"
+                    style={{padding: 8}}
+                    background={'white'}
+                    rounded="full"
+                    onPress={() => {
+                      props.navigation.navigate('DeSo');
+                    }}>
+                    <Text fontSize="xl" color="#3552E5" fontWeight="bold">
+                      Connect to DeSo
+                    </Text>
+                  </Button>
                 </Box>
               </TouchableOpacity>
             </Box>

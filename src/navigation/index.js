@@ -8,6 +8,7 @@ function Navigator() {
   const {auth, user} = useUser();
   return (
     <NavigationContainer>
+      <LoginNavigator />
       {auth !== null ? <UserNavigator /> : <LoginNavigator />}
     </NavigationContainer>
   );
