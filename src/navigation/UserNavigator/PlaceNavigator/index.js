@@ -19,6 +19,4 @@ function PlaceNavigator() {
   );
 }
 
-// Pass TBD
-
 export default PlaceNavigator;

@@ -99,7 +99,15 @@ function Restaurant(props) {
           marginBottom={50}
           borderRadius={10}
           style={primaryCardShadow}>
-          <TouchableOpacity onPress={() => props.navigation.navigate('Pass')}>
+          <TouchableOpacity
+            onPress={() =>
+              props.navigation.navigate('Pass', {
+                name: 'Burma Love',
+                address: '1 Belmont St Cambridge, MA 02138',
+                level: 'Star Patron',
+                color: '#FFD500',
+              })
+            }>
             <Box
               flexDirection="row"
               alignItems="center"

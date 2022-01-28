@@ -1,22 +1,12 @@
 import React from 'react';
 import {useState} from 'react';
-import {
-  Input,
-  Box,
-  InputLeftAddon,
-  Text,
-  Image,
-  Container,
-  Button,
-} from 'native-base';
-import Icon from 'react-native-vector-icons/Feather';
-import theme from '../../theme';
+import {Box, Text, Image, Container, Button} from 'native-base';
 import primaryCardShadow from '../../constants/primaryCardShadow';
 import BurmaLove from '../../static/images/BurmaLove.png';
 import LinearGradient from 'react-native-linear-gradient';
 import Referrals from '../../static/images/Referrals.png';
 import Money from '../../static/images/Money.png';
-import {Transition} from 'react-transition-group';
+import {useNavigation} from '@react-navigation/native';
 
 export const LEVELS = [
   {name: 'Godly', points: 300},
@@ -26,6 +16,7 @@ export const LEVELS = [
 ];
 
 function Pass(props) {
+  const navigation = useNavigation();
   let nextLevel = LEVELS[Math.min(props.data.status + 1, 3)];
   const pointsLeft = nextLevel.points - props.data.points;
 
@@ -50,7 +41,17 @@ function Pass(props) {
       p="2"
       pr="8"
       style={primaryCardShadow}
-      onPress={() => setOpen(!open)}>
+      onPress={() =>
+        navigation.navigate('PassNav', {
+          screen: 'Pass',
+          params: {
+            name: 'Burma Love',
+            address: '1 Belmont St Cambridge, MA 02138',
+            level: 'Star Patron',
+            color: '#FFD500',
+          },
+        })
+      }>
       <Box mb="2" w="100%" flexDir="row">
         <Image alt="Burma Love Logo" h="100" w="100" source={BurmaLove} />
         <Container ml="5" flexDir="column">
@@ -89,7 +90,7 @@ function Pass(props) {
       <Container p="3" display={open ? '' : 'none'} transition={'all 1s ease'}>
         <Container flexDir="row" alignItems="center">
           <Container w="10">
-            <Image source={Money} h="10" w="10" />
+            <Image alt="Money" source={Money} h="10" w="10" />
           </Container>
           <Container flexDir="row">
             <Text fontSize="sm" fontWeight="bold" color="primary.300" w="115">
@@ -102,7 +103,7 @@ function Pass(props) {
         </Container>
         <Container flexDir="row" alignItems="center">
           <Container w="10">
-            <Image source={Referrals} h="8" w="8" />
+            <Image alt="Referrals" source={Referrals} h="8" w="8" />
           </Container>
           <Container flexDir="row">
             <Text fontSize="sm" fontWeight="bold" color="primary.300">

@@ -8,7 +8,7 @@ import {
   useTheme,
 } from 'native-base';
 import React, {useState} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {Share, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Feather';
@@ -23,11 +23,23 @@ import ReferralsIcon from '../../static/images/Referrals.png';
 import theme from '../../theme';
 
 function Pass(props) {
+  const {name, address, level, color} = props.route.params;
   const insets = useSafeAreaInsets();
   const {colors} = useTheme();
   const [moneySpentSheetOpen, toggleMoneySpentSheet] = useState(false);
   const [referralsSheetOpen, toggleReferralsSheet] = useState(false);
   const [levelSheetOpen, toggleLevelSheet] = useState(false);
+  const onShare = async () => {
+    const link = 'https://nytimes.com';
+    try {
+      await Share.share({
+        title: `Check out my NFT from ${name}`,
+        message: `Hey! You should checkout my nft from ${name}. Click here to see more ${link}`,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Box
@@ -37,7 +49,7 @@ function Pass(props) {
       <ScrollView
         style={{
           marginHorizontal: 20,
-          marginTop: insets.top,
+          marginTop: insets.top + 50,
           marginBotom: insets.bottom,
         }}>
         <Center>
@@ -54,7 +66,7 @@ function Pass(props) {
               style={{width: '100%', height: '100%', padding: 10}}
             />
             <Box position="absolute" top={1} right={1}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={onShare}>
                 <Icon
                   name="share"
                   color={theme.colors.primary[300]}
@@ -72,7 +84,13 @@ function Pass(props) {
             marginTop={25}
             borderRadius={10}
             style={[cardShadow, {padding: 15}]}>
-            <TouchableOpacity onPress={() => props.navigation.navigate('')}>
+            <TouchableOpacity
+              onPress={() =>
+                props.navigation.navigate('Place', {
+                  name: 'Burma Love',
+                  address: '1 Belmont St Cambridge, MA 02138',
+                })
+              }>
               <Box
                 flexDirection="row"
                 alignItems="center"
@@ -92,10 +110,10 @@ function Pass(props) {
                     fontSize={24}
                     fontWeight="bold"
                     color={theme.colors.primary[300]}>
-                    Burma Love
+                    {name}
                   </Text>
                   <Text fontSize={16} fontWeight="bold" color="#979797">
-                    1 Belmont St Cambridge, MA 02138
+                    {address}
                   </Text>
                 </Box>
               </Box>
@@ -302,6 +320,18 @@ function Pass(props) {
           </Box>
         </Center>
       </ScrollView>
+      <Box
+        width="100%"
+        height="50"
+        position="absolute"
+        flexDirection="column"
+        top={insets.top}
+        alignItems="center"
+        justifyContent="center">
+        <Text color={color} fontWeight="bold" fontSize={24}>
+          {level}
+        </Text>
+      </Box>
       <MoneySpent
         onClose={() => {}}
         isVisible={moneySpentSheetOpen}

@@ -2,7 +2,6 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Box, Image} from 'native-base';
 import Map from '../../screens/User/Map';
-import Restaurant from '../../screens/User/Restaurant';
 import options from './options';
 import Tabbar from '../../components/Tabbar';
 import WalletIcon from '../../static/icons/wallet.png';
@@ -14,6 +13,7 @@ import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Scanner from '../../screens/Scanner';
 import ProfileNavigator from './ProfileNavigator';
+import PassList from '../../screens/Pass page/PassList';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,12 +22,12 @@ function UserNavigator() {
 
   return (
     <Tab.Navigator
-      initialRouteName="Map"
+      initialRouteName="Passes"
       // tabBar={props => <Tabbar {...props} />}
       screenOptions={options}>
       <Tab.Screen
         name="Passes"
-        component={PassNavigator}
+        component={PassList}
         options={{
           tabBarIcon: ({focused, color}) => (
             <Box alignItems="center" justifyContent="center">
@@ -87,6 +87,15 @@ function UserNavigator() {
       <Tab.Screen
         name="PlaceNav"
         component={PlaceNavigator}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+          tabBarStyle: {display: 'none'},
+        }}
+      />
+      <Tab.Screen
+        name="PassNav"
+        component={PassNavigator}
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,
