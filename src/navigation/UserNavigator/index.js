@@ -23,7 +23,7 @@ function UserNavigator() {
 
   return (
     <Tab.Navigator
-      initialRouteName="Profile"
+      initialRouteName="Map"
       // tabBar={props => <Tabbar {...props} />}
       screenOptions={options}>
       <Tab.Screen
