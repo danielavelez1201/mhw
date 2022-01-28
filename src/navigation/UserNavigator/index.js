@@ -116,6 +116,7 @@ function UserNavigator() {
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,
+          tabBarStyle: {display: 'none'},
         }}
       />
       <Tab.Screen
@@ -142,6 +143,7 @@ function UserNavigator() {
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,
+          tabBarStyle: {display: 'none'},
         }}
       />
     </Tab.Navigator>
