@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>838722807026-oqb06iu6vt0d4b4kmnd3tolp762n0dit.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.838722807026-oqb06iu6vt0d4b4kmnd3tolp762n0dit</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDxHh3XRQbGbethkKFEgrKHmba369C6pxg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>838722807026</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.passport</string>
+	<key>PROJECT_ID</key>
+	<string>passportapp-xyz</string>
+	<key>STORAGE_BUCKET</key>
+	<string>passportapp-xyz.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:838722807026:ios:800109dd8b6e0ae3e1dc6b</string>
+</dict>
+</plist>
