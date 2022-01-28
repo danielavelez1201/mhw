@@ -1,17 +1,17 @@
 const friends = [
   {
     id: 1,
-    name: 'Sofra Bakery & Cafe',
+    name: 'Miam Cafe',
     numCollections: 1,
   },
   {
     id: 2,
-    name: 'Sofra Bakery & Cafe',
+    name: 'Rosie's Pop-Up',
     numCollections: 2,
   },
   {
     id: 3,
-    name: 'Sofra Bakery & Cafe',
+    name: 'Mayami Mexicantina',
     numCollections: 3,
   },
 ];
