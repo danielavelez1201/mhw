@@ -9,7 +9,7 @@ const passes = [
   },
   {
     id: 2,
-    name: "Rosie's Pop-Up Rewards",
+    name: "Rosie's Pop-Up",
     level: 'Star Patron',
     hex: '#FFD500',
     from: 'October 23, 2019',
