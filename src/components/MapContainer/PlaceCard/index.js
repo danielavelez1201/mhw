@@ -1,48 +1,26 @@
-import {Box, Button, Center, Image, Text} from 'native-base';
+import {Box, Image, Text} from 'native-base';
 import React from 'react';
-import LinearGradient from 'react-native-linear-gradient';
-import Icon from 'react-native-vector-icons/Ionicons';
 import primaryCardShadow from '../../../constants/primaryCardShadow';
 import theme from '../../../theme';
 import HeartFilledIcon from '../../../static/icons/heartfilled.png';
-import {Share, TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 function PlaceCard(props) {
   const navigation = useNavigation();
   const {uri, name, address, likes, closeCard} = props;
-  const onShare = async () => {
-    const link = 'https://nytimes.com';
-    try {
-      await Share.share({
-        title: `${name} is Poppin!`,
-        message: `Hey! You should checkout ${name}. The food is fantastic! Click here to see more ${link}`,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   return (
     <Box
       bgColor="#fff"
-      w="280"
-      h="200"
+      w="100%"
+      h="100%"
       borderRadius={10}
       style={[primaryCardShadow, {padding: 10}]}>
       <Box
         flexDirection="row"
         alignItems="center"
-        style={{height: 140, width: '100%'}}>
-        <TouchableOpacity
-          onPress={closeCard}
-          style={{position: 'absolute', top: 0, right: 0}}>
-          <Icon
-            name="close"
-            color={theme.colors.primary[300]}
-            size={25}
-            style={{width: 25, height: 25}}
-          />
-        </TouchableOpacity>
+        style={{height: '100%', width: '100%'}}>
         <Image
           source={{
             uri,
@@ -96,44 +74,6 @@ function PlaceCard(props) {
             </Box>
           </Box>
         </TouchableOpacity>
-      </Box>
-      <Box
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="center"
-        style={{height: 40, paddingHorizontal: 20}}>
-        <LinearGradient
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 0}}
-          colors={['rgba(203, 94, 238, .25)', 'rgba(75, 225, 236, .25)']}
-          borderRadius={25}
-          h="100%"
-          style={{
-            width: 87.5,
-            marginRight: 25,
-          }}>
-          <Button
-            backgroundColor="transparent"
-            onPress={() =>
-              navigation.navigate('PlaceNav', {
-                screen: 'Scanner',
-              })
-            }>
-            <Text
-              fontWeight="bold"
-              fontSize="sm"
-              color={theme.colors.primary[300]}>
-              Check In
-            </Text>
-          </Button>
-        </LinearGradient>
-        <Button
-          borderRadius={25}
-          variant="outline"
-          style={{width: 87.5}}
-          onPress={onShare}>
-          <Text fontSize="sm">Share</Text>
-        </Button>
       </Box>
     </Box>
   );

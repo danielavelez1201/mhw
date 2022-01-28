@@ -17,7 +17,6 @@ function MapContainer(props) {
     Geolocation.getCurrentPosition(
       position => {
         const {coords} = position;
-        console.log(coords);
         setCurrLoc({
           latitude: coords.latitude,
           longitude: coords.longitude,
@@ -39,14 +38,11 @@ function MapContainer(props) {
           latitudeDelta: 0.005,
           longitudeDelta: 0.005,
         }}
-        zoomEnabled={false}
         showsUserLocation
         followsUserLocation
         tintColor={theme.colors.primary[300]}>
         {places.map(({coords, place}, index) => (
-          <Marker key={index} coordinate={coords}>
-            <Place {...place} />
-          </Marker>
+          <Place {...place} coords={coords} key={index} />
         ))}
       </MapView>
     )
