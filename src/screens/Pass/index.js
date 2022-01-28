@@ -325,7 +325,7 @@ function Pass(props) {
         height="50"
         position="absolute"
         flexDirection="column"
-        top={insets.top}
+        style={{top: insets.top}}
         alignItems="center"
         justifyContent="center">
         <Text color={color} fontWeight="bold" fontSize={24}>

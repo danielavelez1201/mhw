@@ -26,9 +26,9 @@ function Restaurant(props) {
         height="50"
         position="absolute"
         flexDirection="column"
-        top={insets.top}
         alignItems="center"
-        justifyContent="center">
+        justifyContent="center"
+        style={{top: insets.top}}>
         <Text color={theme.colors.primary[500]} fontWeight="bold" fontSize={24}>
           {name}
         </Text>
@@ -41,7 +41,7 @@ function Restaurant(props) {
         height="50"
         position="absolute"
         flexDirection="column"
-        top={insets.top}
+        style={{top: insets.top}}
         alignItems="flex-end"
         justifyContent="center">
         <TouchableOpacity
