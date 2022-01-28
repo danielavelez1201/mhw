@@ -2,6 +2,7 @@ import React from 'react';
 import {Box} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 import theme from '../../../theme';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const options = ({navigation, route}) => ({
   headerShown: route.name !== 'List',
@@ -16,26 +17,24 @@ const options = ({navigation, route}) => ({
   gestureEnabled: true,
   headerLeft: () => {
     return (
-      route.name !== 'List' && (
-        <Box m={2}>
-          {/* <NeumorphicButton
+      <Box m={2}>
+        <Box w="4" h="4" justifyContent="center" alignItems="center">
+          <TouchableOpacity
             onPress={() =>
               navigation.reset({
+                routes: [{name: 'Profile'}],
                 index: 0,
-                routes: [{ name: "Food" }],
               })
-            }
-          > */}
-          <Box w="4" h="4" justifyContent="center" alignItems="center">
+            }>
             <Icon
               name="chevron-left"
               color={theme.colors.primary[500]}
-              size={25}
-              style={{width: 25, height: 25}}
+              size={40}
+              style={{width: 40, height: 40}}
             />
-          </Box>
+          </TouchableOpacity>
         </Box>
-      )
+      </Box>
     );
   },
 });

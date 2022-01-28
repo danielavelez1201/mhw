@@ -91,33 +91,53 @@ function Profile(props) {
               backgroundColor="white"
               borderRadius={10}
               style={primaryCardShadow}>
-              <Image
-                source={{
-                  uri,
-                }}
-                resizeMode="contain"
-                alt="Place"
-                borderRadius={100}
-                style={{width: 80, height: 80, marginHorizontal: 20}}
-              />
-              <Box
-                style={{
-                  width: '65%',
-                  marginRight: 20,
-                }}>
-                <Text
-                  fontSize={20}
-                  fontWeight="bold"
-                  color={colors.primary[300]}>
-                  {name}
-                </Text>
-                <Text fontSize={16} fontWeight="bold" color={hex}>
-                  {level}
-                </Text>
-                <Text fontSize={12} color="#979797">
-                  Since {from}
-                </Text>
-              </Box>
+              <TouchableOpacity
+                onPress={() =>
+                  props.navigation.navigate('ProfileNav', {
+                    screen: 'Pass',
+                    params: {
+                      name: 'Burma Love',
+                      address: '1 Belmont St Cambridge, MA 02138',
+                      level: 'Star Patron',
+                      color: '#FFD500',
+                    },
+                  })
+                }>
+                <Box
+                  w="100%"
+                  flex={1}
+                  flexDir="row"
+                  justifyContent="center"
+                  alignItems="center">
+                  <Image
+                    source={{
+                      uri,
+                    }}
+                    resizeMode="contain"
+                    alt="Place"
+                    borderRadius={100}
+                    style={{width: 80, height: 80, marginHorizontal: 20}}
+                  />
+                  <Box
+                    style={{
+                      width: '65%',
+                      marginRight: 20,
+                    }}>
+                    <Text
+                      fontSize={20}
+                      fontWeight="bold"
+                      color={colors.primary[300]}>
+                      {name}
+                    </Text>
+                    <Text fontSize={16} fontWeight="bold" color={hex}>
+                      {level}
+                    </Text>
+                    <Text fontSize={12} color="#979797">
+                      Since {from}
+                    </Text>
+                  </Box>
+                </Box>
+              </TouchableOpacity>
             </Box>
           ))}
         </ScrollView>
@@ -159,27 +179,45 @@ function Profile(props) {
                   borderBottomWidth: 1,
                 }
               }>
-              <Image
-                source={{
-                  uri,
-                }}
-                resizeMode="contain"
-                alt="Place"
-                borderRadius={100}
-                style={{width: 80, height: 80, marginRight: 20}}
-              />
-              <Box
-                style={{
-                  width: '65%',
-                  marginRight: 20,
-                }}>
-                <Text fontSize={20} fontWeight="bold" color="black">
-                  {name}
-                </Text>
-                <Text fontSize={16} color="#979797">
-                  {location}
-                </Text>
-              </Box>
+              <TouchableOpacity
+                onPress={() =>
+                  props.navigation.navigate('ProfileNav', {
+                    screen: 'Place',
+                    params: {
+                      name: 'Burma Love',
+                      address: '1 Belmont St Cambridge, MA 02138',
+                    },
+                  })
+                }>
+                <Box
+                  w="100%"
+                  flex={1}
+                  flexDir="row"
+                  justifyContent="center"
+                  alignItems="center">
+                  <Image
+                    source={{
+                      uri,
+                    }}
+                    resizeMode="contain"
+                    alt="Place"
+                    borderRadius={100}
+                    style={{width: 80, height: 80, marginRight: 20}}
+                  />
+                  <Box
+                    style={{
+                      width: '65%',
+                      marginRight: 20,
+                    }}>
+                    <Text fontSize={20} fontWeight="bold" color="black">
+                      {name}
+                    </Text>
+                    <Text fontSize={16} color="#979797">
+                      {location}
+                    </Text>
+                  </Box>
+                </Box>
+              </TouchableOpacity>
             </Box>
           ))}
         </ScrollView>
@@ -219,37 +257,51 @@ function Profile(props) {
                   borderBottomWidth: 1,
                 }
               }>
-              <Image
-                source={ProfilePicture}
-                resizeMode="contain"
-                alt="Place"
-                borderRadius={100}
-                style={{width: 80, height: 80, marginRight: 20}}
-              />
-              <Box
-                style={{
-                  width: isSearching ? '53%' : '65%',
-                  marginRight: 20,
-                }}>
-                <Text fontSize={20} fontWeight="bold" color="black">
-                  {name}
-                </Text>
-                <Text fontSize={16} color="#979797">
-                  {numCollections} Collections
-                </Text>
-              </Box>
-              {isSearching && (
-                <TouchableOpacity
-                  onPress={() => toggleSearching(prevState => !prevState)}>
+              <TouchableOpacity
+                onPress={() =>
+                  props.navigation.navigate('ProfileNav', {
+                    screen: 'Friend',
+                  })
+                }>
+                <Box
+                  w="100%"
+                  flex={1}
+                  flexDir="row"
+                  justifyContent="center"
+                  alignItems="center">
                   <Image
-                    source={HeartFilledIcon}
+                    source={ProfilePicture}
                     resizeMode="contain"
-                    alt="Heart"
+                    alt="Place"
                     borderRadius={100}
-                    style={{width: 40, height: 40}}
+                    style={{width: 80, height: 80, marginRight: 20}}
                   />
-                </TouchableOpacity>
-              )}
+                  <Box
+                    style={{
+                      width: isSearching ? '53%' : '65%',
+                      marginRight: 20,
+                    }}>
+                    <Text fontSize={20} fontWeight="bold" color="black">
+                      {name}
+                    </Text>
+                    <Text fontSize={16} color="#979797">
+                      {numCollections} Collections
+                    </Text>
+                  </Box>
+                  {isSearching && (
+                    <TouchableOpacity
+                      onPress={() => toggleSearching(prevState => !prevState)}>
+                      <Image
+                        source={HeartFilledIcon}
+                        resizeMode="contain"
+                        alt="Heart"
+                        borderRadius={100}
+                        style={{width: 40, height: 40}}
+                      />
+                    </TouchableOpacity>
+                  )}
+                </Box>
+              </TouchableOpacity>
             </Box>
           ))}
         </ScrollView>

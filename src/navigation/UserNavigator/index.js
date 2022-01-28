@@ -14,6 +14,7 @@ import {useNavigation} from '@react-navigation/native';
 import Scanner from '../../screens/Scanner';
 import ProfileNavigator from './ProfileNavigator';
 import PassList from '../../screens/Pass page/PassList';
+import Profile from '../../screens/Profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +23,7 @@ function UserNavigator() {
 
   return (
     <Tab.Navigator
-      initialRouteName="Passes"
+      initialRouteName="Profile"
       // tabBar={props => <Tabbar {...props} />}
       screenOptions={options}>
       <Tab.Screen
@@ -68,8 +69,8 @@ function UserNavigator() {
         }}
       />
       <Tab.Screen
-        name="ProfileNav"
-        component={ProfileNavigator}
+        name="Profile"
+        component={Profile}
         options={{
           tabBarIcon: ({focused, color}) => (
             <Box alignItems="center" justifyContent="center">
@@ -82,6 +83,14 @@ function UserNavigator() {
               />
             </Box>
           ),
+        }}
+      />
+      <Tab.Screen
+        name="ProfileNav"
+        component={ProfileNavigator}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
         }}
       />
       <Tab.Screen
